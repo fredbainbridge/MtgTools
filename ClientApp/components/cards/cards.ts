@@ -10,12 +10,17 @@ interface Card {
     power: string;
     toughness: string;
     text: string;
-    set: number;
+    set: Set;
     rarity: string;
     ctype: string;
     convertedManaCost: number;
     imageURL: string;
     colorIdentity: string;
+}
+
+interface Set {
+    id: number;
+    name: string;
 }
 
 @Component

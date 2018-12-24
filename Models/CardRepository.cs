@@ -13,7 +13,7 @@ namespace MtgTools.Models
             _context = context;
         }
         public IList<Card> GetAll() {
-            return _context.Cards.ToList();
+            return _context.Cards.Include(c => c.Set).ToList();
         }
     }
 }
