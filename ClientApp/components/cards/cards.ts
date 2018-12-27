@@ -1,27 +1,7 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
+import { Card } from '../classes'
 
-interface Card {
-    id: number;
-    multiVerseID: string;
-    name: string;
-    cost: string;
-    type: string;
-    power: string;
-    toughness: string;
-    text: string;
-    set: Set;
-    rarity: string;
-    ctype: string;
-    convertedManaCost: number;
-    imageURL: string;
-    colorIdentity: string;
-}
-
-interface Set {
-    id: number;
-    name: string;
-}
 
 @Component
 export default class CardsComponent extends Vue {
