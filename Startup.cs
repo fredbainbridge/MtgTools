@@ -32,6 +32,7 @@ namespace MtgTools
                 services.AddDbContext<MtgContext>(options =>
                         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<ICardRepository, CardRepository>();
+            services.AddScoped<IBoosterRepository, BoosterRepository>();
             services.AddMvc();
         }
 
