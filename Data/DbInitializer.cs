@@ -11,6 +11,7 @@ namespace MtgTools.Data {
     public class DbInitializer {
         public static void Initialize(MtgContext context) {
             context.Database.EnsureCreated();
+            
             Set mtgset;
             string[] lines;
             int counter = 0;

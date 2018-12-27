@@ -45,19 +45,12 @@ namespace MtgTools
                 {
                     HotModuleReplacement = true
                 });
-                using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-                {
-                        var context = serviceScope.ServiceProvider.GetRequiredService<MtgContext>();
-                        
-                        context.Database.Migrate();
-                }
             }
             else
             {
                 using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
                 {
                         var context = serviceScope.ServiceProvider.GetRequiredService<MtgContext>();
-                        
                         context.Database.Migrate();
                 }
                 app.UseExceptionHandler("/Home/Error");
