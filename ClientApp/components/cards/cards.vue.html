@@ -17,7 +17,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in cards">
+                <tr 
+                v-for="item in cards" 
+                v-bind:key="item.id"
+                v-bind:title="item.name"
+                >
                     <td>{{ item.name }}</td>
                     <td>{{ item.cost }}</td>
                     <td>{{ item.type }}</td>

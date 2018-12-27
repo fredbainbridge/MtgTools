@@ -17,5 +17,10 @@ namespace MtgTools.Controllers
         {
             return _CardRepository.GetAll();
         }
+
+        public IList<Set> AvailableSets() {
+            return _CardRepository.GetAvailableSets();
+
+        }
     }
 }

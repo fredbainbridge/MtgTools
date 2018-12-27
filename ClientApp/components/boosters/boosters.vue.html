@@ -1,0 +1,15 @@
+<template>
+    <div>
+        <h1>Booster</h1>
+        {{ booster }}
+        <p>This creates new boosters.</p>
+        <select v-model="selected">
+            <option v-for='set in sets' v-bind:value='set.name' v-bind:key='set.id'>
+            {{ set.name }}
+            </option>
+        </select>
+        <button @click="newBooster">New Booster</button>
+    </div>
+</template>
+
+<script src="./boosters.ts"></script>

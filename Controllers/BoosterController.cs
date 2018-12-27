@@ -15,10 +15,10 @@ namespace MTGDrafter.Controllers
         {
             _BoosterRepository = BoosterRepository;
         }
-        public IActionResult New(string set)
+        public Booster New(string id)
         {
-            Set mtgset = new Set(set);            
-            return View(_BoosterRepository.New(mtgset));
+            Set mtgset = new Set(id);            
+            return _BoosterRepository.New(mtgset);
         }
     }
 }
