@@ -1,46 +1,13 @@
 <template>
     <div>
         <h1>Booster</h1>
-        {{boosterCards}}
-        <ul>
-            <li v-for="b in booster">
-              <ul>
-                <li v-for="card in b.cards">
-                  abc
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <table v-if="hasBooster" class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Cost</th>
-                    <th>Type</th>
-                    <th>Power</th>
-                    <th>Toughness</th>
-                    <th>Text</th>
-                    <th>Set</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr 
-                v-for="item in boosterCards" 
-                v-bind:key="item.id"
-                v-bind:title="item.name"
-                >
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.cost }}</td>
-                    <td>{{ item.type }}</td>
-                    <td>{{ item.power }}</td>
-                    <td>{{ item.toughness }}</td>
-                    <td>{{ item.text }}</td>
-                    <td>{{ item.set.name }}</td>
-                </tr>
-            </tbody>
-        </table>
-        
-        {{ booster }}
+        <div v-for="(value, key) in booster">
+            <div v-if="key === 'cards'">
+                <div v-for="card in value">
+                    {{ card.name }}
+                </div>
+            </div>
+        </div>
         <select v-model="selected">
             <option v-for='set in sets' v-bind:value='set.name' v-bind:key='set.id'>
             {{ set.name }}

@@ -1,7 +1,34 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-import { Set, Card, Booster } from '../classes'
+//import { Set, Card, Booster } from '../classes'
 
+interface Set {
+    id: number;
+    name: string;
+}
+
+interface Card {
+    id: number;
+    multiVerseID: string;
+    name: string;
+    cost: string;
+    type: string;
+    power: string;
+    toughness: string;
+    text: string;
+    set: Set;
+    rarity: string;
+    ctype: string;
+    convertedManaCost: number;
+    imageURL: string;
+    colorIdentity: string;
+}
+
+interface Booster {
+    id: number;
+    set: Set;
+    cards: Card[];
+}
 
 @Component
 export default class BoostersComponent extends Vue {
@@ -9,7 +36,7 @@ export default class BoostersComponent extends Vue {
     selected: string = '';
     booster: Booster[] = [];
     hasBooster: boolean = false;
-    
+
     mounted() {
         fetch('/Card/AvailableSets')
             .then(response => response.json() as Promise<Set[]>)
@@ -19,16 +46,12 @@ export default class BoostersComponent extends Vue {
             });
     }
     newBooster(){
-        fetch('booster/new/' + this.selected)
-            .then(response => response.json() as Promise<Booster[]>)
+        fetch('/booster/new/' + this.selected)
+            .then((response) => {return response.json() as Promise<Booster[]>})
             .then(data => {
                 this.booster = data;
                 this.hasBooster = true;
                 
             });
-    }
-
-    get boosterCards(): Card[] {
-        return this.booster[0].cards;
     }
 }
