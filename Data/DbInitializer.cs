@@ -28,6 +28,19 @@ namespace MtgTools.Data {
                     counter++;
                 }
             }
+            if(!context.Cards.Where(c => c.Set.Name == "Ultimate Masters").Any()) {
+                lines = File.ReadAllLines(@"Data\Sets\uma.csv.json");
+                mtgset = new Set("Ultimate Masters");
+                counter = 0;
+                foreach(string line in lines) {
+                    if(counter != 0) {
+                        string[] CardProperties = line.Split(',');
+                        Card card = new Card { MultiVerseID = CardProperties[0], Name = CardProperties[1].Replace("##COMMA##",","), Cost = CardProperties[2], Type = CardProperties[3], Power = CardProperties[4], Toughness = CardProperties[5], Text = CardProperties[6].Replace("##COMMA##",","), Set = mtgset, Rarity = CardProperties[8], Ctype = CardProperties[9],ConvertedManaCost = CardProperties[10], ImageURL = CardProperties[11], ColorIdentity = CardProperties[12] };
+                        context.Cards.Add(card);
+                    }
+                    counter++;
+                }
+            }
             context.SaveChanges();
         }
     }

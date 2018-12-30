@@ -1,0 +1,12 @@
+<template>
+    <div>
+        <label>{{ boosternum }}</label>
+        <select v-model="selectedset">
+            <option v-for='set in sets' v-bind:value='set.name' v-bind:key='set.id'>
+            {{ set.name }}
+            </option>
+        </select>
+    </div>
+</template>
+
+<script src="./booster-selection.ts"></script>

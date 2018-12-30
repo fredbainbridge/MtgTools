@@ -1,0 +1,20 @@
+<template>
+    <div>
+        <h1>Sealed</h1>
+        
+        <div>
+            <label>Number of Boosters</label>
+            <select v-model='numboosters'>
+                <option>{{ numboosters }}</option>
+            </select>
+        </div>
+        <div v-for="n in numboosters" class="row">
+            <BoosterSelection v-bind:boosternum="n" ></BoosterSelection>
+
+        </div>
+
+        <button @click="newBooster">New Sealed Deck</button>
+    </div>
+</template>
+
+<script src="./sealed-new.ts"></script>
