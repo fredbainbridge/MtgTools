@@ -8,12 +8,12 @@
                 <option>{{ numboosters }}</option>
             </select>
         </div>
-        <div v-for="n in numboosters" class="row">
-            <BoosterSelection v-bind:boosternum="n" ></BoosterSelection>
+        <div v-for="n in numboosters":key="n" class="row">
+            <boosterselectioncomponent v-bind:boosternum="n" ></boosterselectioncomponent>
 
         </div>
 
-        <button @click="newBooster">New Sealed Deck</button>
+        <button @click="newSealed">New Sealed Deck</button>
     </div>
 </template>
 

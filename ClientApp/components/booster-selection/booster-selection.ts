@@ -5,10 +5,10 @@ import { Set } from '../classes'
 @Component
 export default class BoosterSelectionComponent extends Vue {
     @Prop({ default: 0 })
-    boosternum: number;
+    boosternum!: number;
     sets: Set[] = [];
     selectedset: string = '';
-    
+    name: string = 'is-name';
     mounted() {
         fetch('/Card/AvailableSets')
             .then(response => response.json() as Promise<Set[]>)

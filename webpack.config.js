@@ -3,11 +3,13 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const bundleOutputDir = './wwwroot/dist';
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = (env) => {
     const isDevBuild = !(env && env.prod);
 
     return [{
+        mode: 'development',
         stats: { modules: false },
         context: __dirname,
         resolve: { extensions: [ '.js', '.ts' ] },
@@ -35,7 +37,8 @@ module.exports = (env) => {
             new webpack.DllReferencePlugin({
                 context: __dirname,
                 manifest: require('./wwwroot/dist/vendor-manifest.json')
-            })
+            }),
+            new VueLoaderPlugin()
         ].concat(isDevBuild ? [
             // Plugins that apply in development builds only
             new webpack.SourceMapDevToolPlugin({

@@ -6,17 +6,16 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 const routes = [
-    { path: '/', component: require('./components/home/home.vue.html') },
-    { path: '/counter', component: require('./components/counter/counter.vue.html') },
-    { path: '/fetchdata', component: require('./components/fetchdata/fetchdata.vue.html') },
-    { path: '/cards', component: require('./components/cards/cards.vue.html') },
-    { path: '/boosters', component: require('./components/boosters/boosters.vue.html') },
-    { path: '/sealed-new', component: require('./components/sealed-new/sealed-new.vue.html')},
-    { path: '/booster-selection', component: require('./components/booster-selection/booster-selection.vue.html')}
+    { path: '/', component: require('./components/home/home.vue.html').default },
+    { path: '/counter', component: require('./components/counter/counter.vue.html').default },
+    { path: '/fetchdata', component: require('./components/fetchdata/fetchdata.vue.html').default },
+    { path: '/cards', component: require('./components/cards/cards.vue.html').default },
+    { path: '/boosters', component: require('./components/boosters/boosters.vue.html').default },
+    { path: '/sealed-new', component: require('./components/sealed-new/sealed-new.vue.html').default}
 ];
 
 new Vue({
     el: '#app-root',
     router: new VueRouter({ mode: 'history', routes: routes }),
-    render: h => h(require('./components/app/app.vue.html'))
+    render: h => h(require('./components/app/app.vue.html').default)
 });
