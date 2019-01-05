@@ -4,11 +4,17 @@ import { Set } from '../classes'
 
 @Component
 export default class BoosterSelectionComponent extends Vue {
-    @Prop({ default: 0 })
-    boosternum!: number;
-    sets: Set[] = [];
+    @Prop({ type: Array })
+    sets!: Set[]
+    @Prop({ type: String, default: null})
+    label!: String;
     selectedset: string = '';
     name: string = 'is-name';
+    onChange() {
+        this.$emit('setchanged',this.selectedset)
+    }
+    /*
+    
     mounted() {
         fetch('/Card/AvailableSets')
             .then(response => response.json() as Promise<Set[]>)
@@ -16,4 +22,5 @@ export default class BoosterSelectionComponent extends Vue {
                 this.sets = data;
             });
     }
+    */
 }

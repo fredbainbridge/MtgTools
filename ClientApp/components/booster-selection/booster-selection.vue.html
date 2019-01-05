@@ -1,12 +1,9 @@
 <template>
-    <div>
-        <label>{{ boosternum }}</label>
-        <select v-model="selectedset" ref="boosterselection">
+        <select v-model="selectedset" ref="boosterselection" @change="onChange()">
             <option v-for='(set, index) in sets' v-bind:value='set.name' v-bind:key='index'>
-            {{ set.name }}
+                {{ set.name }}
             </option>
         </select>
-    </div>
 </template>
 
 <script src="./booster-selection.ts"></script>

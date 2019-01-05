@@ -15,7 +15,7 @@ namespace MtgTools.Models
         private Pack GetPackDefinition(Set set)
         {
             Pack pack = new Pack();
-            if (set.Name == "Masters 25")
+            if (set.Name == "Masters 25" || set.Name == "Ultimate Masters")
             {
                 Option option1 = new Option();
                 option1.Probability = 0.125;

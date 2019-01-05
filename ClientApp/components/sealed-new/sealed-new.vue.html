@@ -1,18 +1,27 @@
 <template>
     <div>
         <h1>Sealed</h1>
-        
+
+        <div class="row">
+            <label>Number of Boosters
+                <select v-model='numboosters'>
+                    <option>{{ numboosters }}</option>
+                </select>
+            </label>
+        </div>
+        <div class="row"><p></p></div>
+        <div class="row">
+            <label> Set
+            <boosterselectioncomponent v-bind:sets="sets" v-on:setchanged="changesets"></boosterselectioncomponent>
+            </label>
+        </div>
         <div>
-            <label>Number of Boosters</label>
-            <select v-model='numboosters'>
-                <option>{{ numboosters }}</option>
-            </select>
-        </div>
-        <div v-for="n in numboosters":key="n" class="row">
-            <boosterselectioncomponent v-bind:boosternum="n" ></boosterselectioncomponent>
+            <div v-for="n in numboosters" :key="n">
+                <label>{{ n }}</label>
+                <boosterselectioncomponent v-bind:sets="sets"></boosterselectioncomponent>
 
+            </div>
         </div>
-
         <button @click="newSealed">New Sealed Deck</button>
     </div>
 </template>

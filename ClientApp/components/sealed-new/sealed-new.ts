@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-import { Set, Booster } from '../classes';
+import { Set, Booster, Card } from '../classes';
 import { default as BoosterSelection } from '../booster-selection/booster-selection'
 
 @Component({
@@ -13,6 +13,9 @@ export default class SealedNewComponent extends Vue {
     selected: string = '';
     booster: Booster[] = [];
     numboosters: number = 6;
+    cards: Card[] = [];
+    isNotPartOfSealed: string = 'isNotPartOfSealed';
+
     mounted() {
         fetch('/Card/AvailableSets')
             .then(response => response.json() as Promise<Set[]>)
@@ -23,15 +26,23 @@ export default class SealedNewComponent extends Vue {
     newSealed() {
         var boosterSelections = this.$children as BoosterSelection[]
         for (let i of boosterSelections) {
-            console.log(i.selectedset)
+            if(i.label != "isNotPartOfSealed") {
+                fetch('/booster/new/' + i.selectedset)
+                .then((response) => { return response.json() as Promise<Booster[]> })
+                .then(data => {
+
+                    this.booster.concat(data);
+                });
+            }
         }
-        //boosterSelections.forEach(element => {
-            
-        //});
-        //fetch('/booster/new/' + this.selected)
-        //    .then((response) => { return response.json() as Promise<Booster[]> })
-        //    .then(data => {
-        //        this.booster = data;
-        //    });
+        for(let b of this.booster) {
+            this.cards.concat(b.cards);
+        }
+    }
+    changesets(setname: string){
+        var boosterSelections = this.$children as BoosterSelection[];
+        for (let i of boosterSelections) {
+            i.selectedset = setname
+        }
     }
 }
