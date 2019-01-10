@@ -11,10 +11,9 @@ import { default as BoosterSelection } from '../booster-selection/booster-select
 export default class SealedNewComponent extends Vue {
     sets: Set[] = [];
     selected: string = '';
-    booster: Booster[] = [];
     numboosters: number = 6;
-    cards: Card[] = [];
     isNotPartOfSealed: string = 'isNotPartOfSealed';
+    sealedID: number = 0;
 
     mounted() {
         fetch('/Card/AvailableSets')
@@ -25,19 +24,24 @@ export default class SealedNewComponent extends Vue {
     }
     newSealed() {
         var boosterSelections = this.$children as BoosterSelection[]
+        var sets: Set [] = [];
+        
         for (let i of boosterSelections) {
             if(i.label != "isNotPartOfSealed") {
-                fetch('/booster/new/' + i.selectedset)
-                .then((response) => { return response.json() as Promise<Booster[]> })
-                .then(data => {
-
-                    this.booster.concat(data);
-                });
+                let tmpSet = {name: i.selectedset, id: 0 };
+                sets.push(tmpSet);
             }
         }
-        for(let b of this.booster) {
-            this.cards.concat(b.cards);
-        }
+        let requestHeaders: any = { 'Content-Type': 'application/json' };
+        fetch('/sealed/new',{
+                    headers: requestHeaders, 
+                    body: JSON.stringify(sets),
+                    method: "POST"
+                })
+                .then((response) => { return response.json() as Promise<number> })
+                .then(data => {
+                    this.sealedID = data;
+                });
     }
     changesets(setname: string){
         var boosterSelections = this.$children as BoosterSelection[];

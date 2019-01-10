@@ -33,6 +33,7 @@ namespace MtgTools
                         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<ICardRepository, CardRepository>();
             services.AddScoped<IBoosterRepository, BoosterRepository>();
+            services.AddScoped<ISealedGameRepository, SealedGameRepository>();
             services.AddMvc();
         }
 

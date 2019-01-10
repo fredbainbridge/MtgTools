@@ -13,7 +13,7 @@ namespace MtgTools.Data {
         public DbSet<Set> Sets {get; set;}
         public DbSet<Card> Cards {get; set;}
         public DbSet<BoosterCard> BoosterCards { get; set; }
-
+        public DbSet<SealedGame> SealedGames {get; set;}
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
         //    base.OnModelCreating(modelBuilder);

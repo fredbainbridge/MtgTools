@@ -1,0 +1,7 @@
+<template>
+<div>
+    <div class="col-sm-3" v-for="card in cards" v-bind:key="card.id">
+        <cardcomponent v-bind:card=card>
+    </div>
+</div>
+</template>

@@ -5,15 +5,11 @@ using System.Threading.Tasks;
 
 namespace MtgTools.Models
 {
-    public class Booster
-    {
+    public class Booster {
         public int ID { get; set; }
         public Set Set { get; set; }
-
         public ICollection<BoosterCard> Cards {get; set;}
     }
-
-    
 }
 
 
