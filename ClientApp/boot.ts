@@ -11,7 +11,15 @@ const routes = [
     { path: '/fetchdata', component: require('./components/fetchdata/fetchdata.vue.html').default },
     { path: '/cards', component: require('./components/cards/cards.vue.html').default },
     { path: '/boosters', component: require('./components/boosters/boosters.vue.html').default },
-    { path: '/sealed-new', component: require('./components/sealed-new/sealed-new.vue.html').default}
+    { 
+        path: '/sealed-new/:sealedid', 
+        component: require('./components/sealed-new/sealed-new.vue.html').default,
+        props: true
+    },
+    {
+        path: '/sealed-new', 
+        component: require('./components/sealed-new/sealed-new.vue.html').default
+    }
 ];
 
 new Vue({
