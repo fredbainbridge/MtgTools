@@ -3,6 +3,7 @@ import { Component } from 'vue-property-decorator';
 import { Set, Booster, Card } from '../classes';
 import { default as BoosterSelection } from '../booster-selection/booster-selection'
 
+
 @Component({
     components: {
         boosterselectioncomponent: require('../booster-selection/booster-selection.vue.html').default
@@ -14,6 +15,7 @@ export default class SealedNewComponent extends Vue {
     numboosters: number = 6;
     isNotPartOfSealed: string = 'isNotPartOfSealed';
     sealedID: number = 0;
+    loading: number = 0;
 
     mounted() {
         fetch('/Card/AvailableSets')
@@ -23,6 +25,7 @@ export default class SealedNewComponent extends Vue {
             });
     }
     newSealed() {
+        this.loading = 1;
         var boosterSelections = this.$children as BoosterSelection[]
         var sets: Set [] = [];
         
@@ -38,11 +41,22 @@ export default class SealedNewComponent extends Vue {
                     body: JSON.stringify(sets),
                     method: "POST"
                 })
-                .then((response) => { return response.json() as Promise<number> })
+                .then((response) => { 
+                    this.loading = 1
+                    return response.json() as Promise<number> 
+                })
                 .then(data => {
-                    this.sealedID = data;
+                    this.$router.push({
+                        path: 'sealed-edit/' + data 
+                   })
                 });
+        //this.gotosetedit()
     }
+    
+    gotosetedit() {
+        
+    }
+    
     changesets(setname: string){
         var boosterSelections = this.$children as BoosterSelection[];
         for (let i of boosterSelections) {

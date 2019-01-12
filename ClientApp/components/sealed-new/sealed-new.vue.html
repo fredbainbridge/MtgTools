@@ -22,7 +22,9 @@
 
             </div>
         </div>
-        <button @click="newSealed">New Sealed Deck</button>
+        <button v-if="loading == 0" @click="newSealed">New Sealed Deck</button>
+        <p v-else><em>Loading...</em></p>
+        
     </div>
 </template>
 
