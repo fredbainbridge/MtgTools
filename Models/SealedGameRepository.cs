@@ -1,6 +1,7 @@
 using MtgTools.Models;
 using MtgTools.Data;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MtgTools.Models {
     public class SealedGameRepository : ISealedGameRepository {
@@ -23,6 +24,15 @@ namespace MtgTools.Models {
             _context.SealedGames.Add(sealedGame);
             _context.SaveChanges();
             return sealedGame.ID;
+        }
+
+        public List<BoosterCard> GetCardPool(int ID) {
+            return _context.SealedGames
+                    .Where(g => g.ID == ID)
+                    .Select(g => g.CardPool)
+                    .FirstOrDefault()
+                    .ToList();
+            
         }
     }
 }

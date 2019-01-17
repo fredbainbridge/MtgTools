@@ -6688,6 +6688,11 @@
       "integrity": "sha512-cH208IoM+jgZyEf/g7mnFyofwPDJTM/QvBNhYMjqGB8fCsRyTf68rH2ISw/G20tJv+5mIThQ3upKwoL4jLTr1A==",
       "dev": true
     },
+    "vue-draggable": {
+      "version": "1.0.9",
+      "resolved": "https://registry.npmjs.org/vue-draggable/-/vue-draggable-1.0.9.tgz",
+      "integrity": "sha512-I93J1rsoxcZIc5Ts+DGCTw3gvSpU77OAbA+k4DevH4o2kPnjDk3s+iDMhO/GhK9vFb4yM1GmTIFyrcwMN/+SvQ=="
+    },
     "vue-functional-data-merge": {
       "version": "2.0.7",
       "resolved": "https://registry.npmjs.org/vue-functional-data-merge/-/vue-functional-data-merge-2.0.7.tgz",

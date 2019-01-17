@@ -13,5 +13,8 @@ namespace MtgTools.Controllers {
         public int New([FromBody] Set[] sets) {
             return _sealedGameRepo.New(sets);
         }
+        public List<BoosterCard> Index(int id) {
+            return _sealedGameRepo.GetCardPool(id);
+        }
     }
 }

@@ -12,8 +12,8 @@ const routes = [
     { path: '/cards', component: require('./components/cards/cards.vue.html').default },
     { path: '/boosters', component: require('./components/boosters/boosters.vue.html').default },
     { 
-        path: '/sealed-new/:sealedid', 
-        component: require('./components/sealed-new/sealed-new.vue.html').default,
+        path: '/sealed-edit/:sealedid', 
+        component: require('./components/sealed-edit/sealed-edit.vue.html').default,
         props: true
     },
     {

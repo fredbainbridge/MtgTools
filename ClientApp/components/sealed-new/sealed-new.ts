@@ -50,7 +50,6 @@ export default class SealedNewComponent extends Vue {
                         path: 'sealed-edit/' + data 
                    })
                 });
-        //this.gotosetedit()
     }
     
     gotosetedit() {
