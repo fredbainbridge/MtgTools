@@ -1,12 +1,13 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import BootstrapVue from 'bootstrap-vue'
-//import BoosterSelectionComponent from '../booster-selection/booster-selection'
+import BoosterSelectionComponent from '../booster-selection/booster-selection'
 
 Vue.use(BootstrapVue);
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 
 @Component({
     components: {
