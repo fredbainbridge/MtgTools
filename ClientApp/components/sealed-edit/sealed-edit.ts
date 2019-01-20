@@ -16,13 +16,16 @@ export default class SealedEditComponent extends Vue {
 
     mounted(){
         this.options = {
-            dropzoneSelector: 'ul',
-            draggableSelector: 'li',
+            dropzoneSelector: 'div',
+            draggableSelector: 'img',
             multipleDropzonesItemsDraggingEnabled: true,
             showDropzoneAreas: true,
-            //onDrop: function(event) {},
+            onDrop: function(event: any){
+                //alert(event.droptarget)
+                this.$forceUpdate();
+            },
             //onDragstart: function(event) {},
-            //onDragend: function(event) {}
+            //onDragend: 
           }
         fetch('/Sealed?ID=' + this.sealedid)
             .then(response => response.json() as Promise<Card[]>)
@@ -30,4 +33,7 @@ export default class SealedEditComponent extends Vue {
                 this.cards = data;
             });
     }
+    cardDrop(){
+        
+    };
 }
